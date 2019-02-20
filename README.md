@@ -13,6 +13,6 @@ assert(encode_url == "http://xn--pple-43d.com");
 ```c++
 std::string input = "http://xn--pple-43d.com";
 auto decode_url = puny_code::url_decode<wchar_t>(input);
-assert(decode_url == "http://аpple.com");
+assert(decode_url == L"http://аpple.com");
 ```
 
