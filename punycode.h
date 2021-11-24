@@ -180,7 +180,7 @@ std::vector<std::basic_string<_Ty>> split(
 
 // convert unicode string to punycode string
 template <class _Ty, class _Tt>
-std::basic_string<_Tt> encode(const const std::basic_string_view<_Ty> &src) {
+std::basic_string<_Tt> encode(const std::basic_string_view<_Ty> &src) {
   auto srclen = src.length();
   std::basic_string<_Tt> dst;
   size_t di = 00, si = 0;
@@ -319,7 +319,7 @@ using ProtocolPair =
 
 template <class _Ty, class _Tt>
 ProtocolPair<_Ty, _Tt> parse_url_prefix(
-    const const std::basic_string_view<_Ty> &input) {
+    const std::basic_string_view<_Ty> &input) {
   if (input.find(HttpsProcotol<_Ty>()) == 0) {
     return std::make_pair<std::basic_string_view<_Ty>, std::basic_string<_Tt>>(
         input.substr(8), HttpsProcotol<_Tt>());
@@ -357,7 +357,7 @@ std::basic_string<_Tt> convert(const std::basic_string_view<_Ty> &input,
 template <class _Ty>
 std::string url_encode(const std::basic_string_view<_Ty> &input) {
   return convert<_Ty, char>(
-      input, [](const const std::basic_string_view<_Ty> &part) {
+      input, [](const std::basic_string_view<_Ty> &part) {
         std::string output = encode<_Ty, char>(part);
         return part.size() == output.size() ? output : Prefix<char>() + output;
       });
